@@ -15,15 +15,20 @@
 
 ## Getting Started
 
-### Clone Project 
+### 1. Clone the Repository
 
-### 1. Install Dependencies
+```bash
+git clone git@github.com:shikharbahikmagar/doctor_appointment_system.git
+cd doctor_appointment_system
+```
+
+### 2. Install Dependencies
 
 ```bash
 composer install
 ```
 
-### 2. Environment Setup
+### 3. Environment Setup
 
 ```bash
 cp .env.example .env
@@ -41,13 +46,14 @@ DB_USERNAME=your_username
 DB_PASSWORD=your_password
 ```
 
-### 3. Run Migrations
+### 4. Run Migrations & Seed
 
 ```bash
 php artisan migrate
+php artisan db:seed
 ```
 
-### 4. Start the Server
+### 5. Start the Server
 
 ```bash
 php artisan serve
