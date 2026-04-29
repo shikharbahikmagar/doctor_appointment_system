@@ -15,6 +15,8 @@
 
 ## Getting Started
 
+### Clone Project 
+
 ### 1. Install Dependencies
 
 ```bash
