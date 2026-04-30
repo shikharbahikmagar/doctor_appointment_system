@@ -28,7 +28,7 @@ class AppointmentController extends Controller
     }
 
     /**
-     * Get patient Appointments
+     * Get Appointments By patient
      */
 
     public function myAppointments(): JsonResponse
@@ -39,7 +39,7 @@ class AppointmentController extends Controller
     }
 
     /**
-     * Get Doctor Schedules
+     * Get Schedules By Doctor
      */
     public function mySchedules(): JsonResponse
     {
