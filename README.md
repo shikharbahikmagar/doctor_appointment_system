@@ -68,3 +68,9 @@ Once the server is running, visit:
 ```
 http://localhost:8000/docs/api
 ```
+### Feature Testing  
+
+```bash
+php artisan test 
+```
+

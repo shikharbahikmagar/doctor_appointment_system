@@ -54,3 +54,26 @@ test('doctor can update appointment status', function () {
         'status' => 'confirmed',
     ]);
 });
+
+test('slot cannot be double booked', function () {
+
+    $user = User::factory()->create(['role' => 'user']);
+    $doctor = User::factory()->create(['role' => 'doctor']);
+
+    $payload = [
+        'doctor_id' => $doctor->id,
+        'appointment_date' => '2027-01-01',
+        'appointment_time' => '10:00',
+        'remarks' => 'test',
+    ];
+
+    $response1 = $this->actingAs($user, 'sanctum')
+        ->postJson('/api/appointment', $payload);
+
+    $response1->assertCreated();
+
+    $response2 = $this->actingAs($user, 'sanctum')
+        ->postJson('/api/appointment', $payload);
+
+    $response2->assertStatus(422);
+});

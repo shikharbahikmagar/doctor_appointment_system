@@ -47,6 +47,20 @@ test('user can login successfully', function () {
     ]);
 });
 
+test('authenticated doctor can fetch all schedules', function () {
+
+
+    // create doctors
+    $user = User::factory()->create([
+        'role' => 'doctor',
+    ]);
+
+
+    $response = $this->actingAs($user, 'sanctum')
+        ->getJson('/api/my-schedules');
+
+    $response->assertOk();
+});
 
 test('authenticated user can fetch all doctors', function () {
 
