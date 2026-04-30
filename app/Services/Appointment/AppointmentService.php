@@ -13,7 +13,7 @@ class AppointmentService
     /*
      * @param $req
      */
-    public function store(array $req)
+    public function store(array $req): Appointment
     {
 
         try {
@@ -38,6 +38,32 @@ class AppointmentService
             ]);
         } catch (Exception $e) {
             Log::error('Error Booking Appointment', [
+                'message' => $e->getMessage(),
+                'file' => $e->getFile(),
+                'line' => $e->getLine()
+            ]);
+
+            throw $e;
+        }
+    }
+
+    /*
+     * @param $req
+     */
+    public function updateStatus(Appointment $appointment, $req): Appointment
+    {
+        try {
+
+
+            $appointment->update([
+                'status' => $req['status'],
+            ]);
+
+            return $appointment->refresh();
+        } catch (Exception $e) {
+
+
+            Log::error('Error Updating Appointment Status', [
                 'message' => $e->getMessage(),
                 'file' => $e->getFile(),
                 'line' => $e->getLine()

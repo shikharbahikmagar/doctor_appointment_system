@@ -21,6 +21,9 @@ Route::get('doctors', [DoctorController::class, 'index'])->middleware('auth:sanc
 //book appointment
 Route::post('appointment', [AppointmentController::class, 'store'])->middleware(['auth:sanctum', 'role:user']);
 
+//update appointment status by doctor
+Route::patch('appointment/{appointment}', [AppointmentController::class, 'updateStatus'])->middleware(['auth:sanctum', 'role:doctor']);
+
 //get my bookings
 Route::get('my-bookings', [AppointmentController::class, 'myAppointments'])->middleware(['auth:sanctum', 'role:user']);
 
